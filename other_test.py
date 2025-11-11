@@ -56,5 +56,81 @@
 #         result += ', сотрудник'
 #     return {'Hello': result}
 
+# name = 'Han Solo'
+# print(name.lower())
+# print(name.upper())
+# print(name.title())
+# print(name.capitalize())
+# print(name)
 
-print(100 - 100.0 * (50.5 / 100.0))
+""" Структура примерная большого проекта
+
+big_online_market/
+    └── app/
+        ├── api/                # Тут все функции-обработчики проекта.
+        |   ├── __init__.py
+        |   ├── customer.py
+        |   ├── order.py
+        |   └── shop.py
+        ├── сore/                # Тут "ядро" проекта.
+        |   ├── __init__.py
+        |   ├── config.py
+        |   └── db.py
+        ├── models/              # Тут все модели проекта.
+        |   ├── __init__.py
+        |   ├── customer.py
+        |   ├── order.py
+        |   └── shop.py
+        ├── schemas/              # Тут все схемы проекта.
+        |   ├── __init__.py
+        |   ├── customer.py
+        |   ├── order.py
+        |   └── shop.py
+        ├── service/              # Тут бизнес-логика проекта.
+        |   ├── __init__.py
+        |   ├── matching.py
+        |   └── security_checks.py
+        ├── __init__.py
+        └── main.py               # Тут создаётся объект приложения. 
+
+Или так:
+
+big_online_market/
+    └── app/
+        ├── catalog/              # Тут файлы для управления каталогом.
+        |   ├── __init__.py
+        |   ├── schemas.py
+        |   ├── models.py
+        |   ├── matching.py      # Тут логика, относящаяся только к catalog/        
+        |   └── endpoints.py
+        ├── сore/                # Тут "ядро" проекта.
+        |   ├── __init__.py
+        |   ├── config.py
+        |   └── db.py
+        ├── order/                # Тут файлы для работы с заказом.
+        |   ├── __init__.py
+        |   ├── schemas.py
+        |   ├── models.py
+        |   └── endpoints.py
+        ├── user/                 # Тут файлы для работы с пользователями.
+        |   ├── __init__.py
+        |   ├── schemas.py
+        |   ├── models.py
+        |   ├── security_checks.py  # Тут логика, относящаяся только к user/     
+        |   └── endpoints.py
+          ├── __init__.py
+          └── main.py               # Тут создаётся объект приложения. 
+
+
+Маленький проект примерно так:
+small_offline_market/
+    └── app/
+          ├── __init__.py
+        ├── api.py
+        ├── logic.py        
+          ├── main.py
+        ├── models.py
+        ├── security.py        
+          └── schemas.py 
+"""
+

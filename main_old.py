@@ -39,7 +39,15 @@ async def hello_author():
     response_description='Полная строка приветствия'
 )
 async def greetings(
-        name: Annotated[str, Path(min_length=2, max_length=20)],
+        name: Annotated[
+            str,
+            Path(
+                min_length=2,
+                max_length=20,
+                title='Полное имя',
+                description='Можно вводить в любом регистре'
+            )
+        ],
         surname: Annotated[str, Query(min_length=2, max_length=50)],
         # gt означает "больше", >; le — "меньше или равно", <=.
         # gt:  больше чем (greater than), >;
@@ -47,8 +55,12 @@ async def greetings(
         # lt:  меньше чем (less than), <;
         # le:  меньше чем или равно (less than or equal), <=.
         age: Annotated[int | None, Query(gt=4, lt=100)] = None,
-        is_staff: bool = False,
-        education_level: EducationLevel = None,
+        is_staff: Annotated[
+            bool, Query(alias='is-staff', include_in_schema=False)
+        ] = False,
+        education_level: Annotated[
+            EducationLevel, Query(alias='education-level')
+        ] = None,
 ) -> dict[str, str]:
     """
     Приветствие пользователя:
@@ -56,7 +68,6 @@ async def greetings(
     - **name**: имя
     - **surname**: фамилия
     - **age**: возраст (опционально)
-    - **is_staff**: является ли пользователь сотрудником
     - **education_level**: уровень образования (опционально)
     """
     result = ' '.join([name, surname])
